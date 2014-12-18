@@ -39,11 +39,7 @@ class GithubBadges < Sinatra::Base
   run! if app_file == $0
 
   def bounce
-    redirect target
-  end
-
-  def target
-    "http://img.shields.io/badge/#{}-#{@count}-#{Badgerise.colour @count}.#{@extension}"
+    redirect Badgerise.target @thing, @count, @extension
   end
 end
 
