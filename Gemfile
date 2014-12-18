@@ -6,6 +6,8 @@ gem 'curb'
 gem 'sinatra'
 gem 'rake'
 gem 'coveralls'
+gem 'haml'
+gem 'kramdown'
 
 group :test do
   gem 'cucumber'

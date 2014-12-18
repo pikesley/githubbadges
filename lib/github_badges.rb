@@ -1,11 +1,21 @@
 require 'sinatra/base'
 require 'curb'
 require 'json'
+require 'haml'
+require 'kramdown'
+
+GITHUB = {
+  user:    'pikesley',
+  project: 'githubbadges',
+  ribbon:  'right_gray_6d6d6d'
+}
 
 class GithubBadges < Sinatra::Base
   get '/' do
-    'Try /:owner/:repo/:thing'
-  end
+    haml :index, locals: {
+      title: 'Mutilator',
+      github: GITHUB
+    }  end
 
   get '/:user/:repo/:thing' do
     c = Curl::Easy.new("https://api.github.com/repos/#{params[:user]}/#{params[:repo]}/#{params[:thing]}")
