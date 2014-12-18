@@ -68,6 +68,12 @@ module Badgerise
     end
   end
 
+  def Badgerise.get_extension text
+    parts = params[:thing].split('.')
+    @thing = thing_parts[0...-1].join('.')
+    @extension = thing_parts[-1]
+  end
+
   def Badgerise.target type, count, extension = 'svg'
     "http://img.shields.io/badge/#{label type}-#{count}-#{Badgerise.colour count}.#{extension}"
   end

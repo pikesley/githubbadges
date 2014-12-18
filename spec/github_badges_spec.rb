@@ -20,5 +20,9 @@ module Badgerise
       expect(Badgerise.target 'issues', 4).to eq 'http://img.shields.io/badge/open%20issues-4-orange.svg'
       expect(Badgerise.target 'pulls', 1).to eq 'http://img.shields.io/badge/pending%20pull--requests-1-blue.svg'
     end
+
+    it 'extracts an extension' do
+      expect(Badgerise.get_extension 'this.svg').to eq 'svg'
+    end
   end
 end
