@@ -2,20 +2,20 @@
 
 ENV['RACK_ENV'] = 'test'
 
-require File.join(File.dirname(__FILE__), '..', '..', 'lib/issue_counter.rb')
+require File.join(File.dirname(__FILE__), '..', '..', 'lib/github_badges.rb')
 
 require 'capybara'
 require 'capybara/cucumber'
 require 'rspec'
 
-Capybara.app = IssueCounter
+Capybara.app = GithubBadges
 
-class IssueCounterWorld
+class GithubBadgesWorld
   include Capybara::DSL
   include RSpec::Expectations
   include RSpec::Matchers
 end
 
 World do
-  IssueCounterWorld.new
+  GithubBadgesWorld.new
 end
