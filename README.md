@@ -1,6 +1,9 @@
+[![Build Status](https://travis-ci.org/pikesley/githubbadges.svg)](https://travis-ci.org/pikesley/githubbadges)
 [![Dependency Status](http://img.shields.io/gemnasium/pikesley/githubbadges.svg)](https://gemnasium.com/pikesley/githubbadges)
+[![Coverage Status](http://img.shields.io/coveralls/pikesley/githubbadges.svg)](https://coveralls.io/r/pikesley/githubbadges)
 [![Code Climate](http://img.shields.io/codeclimate/github/pikesley/githubbadges.svg)](https://codeclimate.com/github/pikesley/githubbadges)
-[![Badges](http://img.shields.io/:badges-3/3-ff6799.svg)](https://github.com/badges/badgerbadgerbadger)
+[![License](http://img.shields.io/:license-mit-blue.svg)](http://pikesley.mit-license.org)
+[![Badges](http://img.shields.io/:badges-6/6-ff6799.svg)](https://github.com/badges/badgerbadgerbadger)
 
 #Github Badges
 
