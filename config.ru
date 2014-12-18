@@ -1,4 +1,4 @@
 require 'rubygems'
-require File.join(File.dirname(__FILE__), 'lib/issue_counter.rb')
+require File.join(File.dirname(__FILE__), 'lib/github_badges.rb')
 
-run IssueCounter
+run GithubBadges
