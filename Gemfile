@@ -13,4 +13,6 @@ group :test do
   gem 'cucumber'
   gem 'capybara'
   gem 'rspec'
+  gem 'guard-cucumber'
+  gem 'guard-rspec'
 end
