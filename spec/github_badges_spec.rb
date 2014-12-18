@@ -23,6 +23,14 @@ module Badgerise
 
     it 'extracts an extension' do
       expect(Badgerise.get_extension 'this.svg').to eq 'svg'
+      expect(Badgerise.get_extension 'that.png').to eq 'png'
+      expect(Badgerise.get_extension 'this.has.no.extension').to eq 'svg'
+    end
+
+    it 'extracts the non-extension string' do
+      expect(Badgerise.without_extension 'some.name'). to eq 'some.name'
+      expect(Badgerise.without_extension 'some.other.name.png'). to eq 'some.other.name'
+      expect(Badgerise.without_extension 'more-name.svg'). to eq 'more-name'
     end
   end
 end

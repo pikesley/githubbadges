@@ -69,9 +69,22 @@ module Badgerise
   end
 
   def Badgerise.get_extension text
-    parts = params[:thing].split('.')
-    @thing = thing_parts[0...-1].join('.')
-    @extension = thing_parts[-1]
+    parts = text.split('.')
+    if ['svg', 'png'].include? parts[-1]
+      return parts[-1]
+    end
+
+    'svg'
+  end
+
+  def Badgerise.without_extension text
+    parts = text.split('.')
+
+    if ['svg', 'png'].include? parts[-1]
+      return parts[0...-1].join('.')
+    end
+
+    text
   end
 
   def Badgerise.target type, count, extension = 'svg'
