@@ -13,7 +13,7 @@ GITHUB = {
 class GithubBadges < Sinatra::Base
   get '/' do
     haml :index, locals: {
-      title: 'Mutilator',
+      title: 'Github Badges',
       github: GITHUB
     }  end
 
