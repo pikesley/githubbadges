@@ -18,8 +18,9 @@ class GithubBadges < Sinatra::Base
     }  end
 
   get '/:user/:repo/:thing' do
-    thing = params[:thing]
-    thing = thing[0...-4] if thing[-4..-1] == '.svg'
+    thing_parts = params[:thing].split('.')
+    thing = thing_parts[0...-1].join('.')
+    extension = thing_parts[-1]
 
     c = Curl::Easy.new("https://api.github.com/repos/#{params[:user]}/#{params[:repo]}/#{thing}")
     c.headers = {
@@ -51,7 +52,7 @@ class GithubBadges < Sinatra::Base
         thing
     end
 
-    redirect "http://img.shields.io/badge/#{thing}-#{j.count}-#{colour}.svg"
+    redirect "http://img.shields.io/badge/#{thing}-#{j.count}-#{colour}.#{extension}"
   end
 
   # start the server if ruby file executed directly

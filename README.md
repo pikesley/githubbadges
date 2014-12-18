@@ -15,11 +15,11 @@ _v0.0.1_
 
 ###API
 
-####`/:owner/:repo/issues`
+####`/:owner/:repo/issues.(png|svg)`
 
 Will redirect to a shields.io badge containing a count of the open Github issues on `:owner/:repo`
 
-####`/:owner/:repo/pulls`
+####`/:owner/:repo/pulls.(png|svg)`
 
 Will redirect to a shields.io badge containing a count of the pending pull-requests on `:owner/:repo`
 
