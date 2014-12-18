@@ -18,7 +18,10 @@ class GithubBadges < Sinatra::Base
     }  end
 
   get '/:user/:repo/:thing' do
-    c = Curl::Easy.new("https://api.github.com/repos/#{params[:user]}/#{params[:repo]}/#{params[:thing]}")
+    thing = params[:thing]
+    thing = thing[0...-4] if thing[-4..-1] == '.svg'
+
+    c = Curl::Easy.new("https://api.github.com/repos/#{params[:user]}/#{params[:repo]}/#{thing}")
     c.headers = {
         'Accept'     => 'application/json',
         'User-agent' => 'GithubBadges'
@@ -38,7 +41,6 @@ class GithubBadges < Sinatra::Base
       'red'
     end
 
-    thing = params[:thing]
 
     thing = case params[:thing]
       when 'issues'
