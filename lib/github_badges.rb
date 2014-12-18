@@ -43,7 +43,7 @@ class GithubBadges < Sinatra::Base
   end
 
   def target
-    "http://img.shields.io/badge/#{label}-#{@count}-#{Badgerise.colour @count}.#{@extension}"
+    "http://img.shields.io/badge/#{}-#{@count}-#{Badgerise.colour @count}.#{@extension}"
   end
 end
 
@@ -72,7 +72,7 @@ module Badgerise
     end
   end
 
-  def target label, count, extension = 'svg'
-    "http://img.shields.io/badge/#{label}-#{@count}-#{Badgerise.colour @count}.#{@extension}"
+  def Badgerise.target type, count, extension = 'svg'
+    "http://img.shields.io/badge/#{label type}-#{count}-#{Badgerise.colour count}.#{extension}"
   end
 end

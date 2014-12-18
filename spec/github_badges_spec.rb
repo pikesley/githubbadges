@@ -15,5 +15,10 @@ module Badgerise
       expect(Badgerise.label 'pulls').to eq 'pending%20pull--requests'
       expect(Badgerise.label 'unchanged').to eq 'unchanged'
     end
+
+    it 'generates a target url' do
+      expect(Badgerise.target 'issues', 4).to eq 'http://img.shields.io/badge/open%20issues-4-orange.svg'
+      expect(Badgerise.target 'pulls', 1).to eq 'http://img.shields.io/badge/pending%20pull--requests-1-blue.svg'
+    end
   end
 end
