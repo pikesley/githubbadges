@@ -20,11 +20,7 @@ class GithubBadges < Sinatra::Base
     }  end
 
   get '/:user/:repo/:thing' do
-    thing_parts = params[:thing].split('.')
-    @thing = thing_parts[0...-1].join('.')
-    @extension = thing_parts[-1]
-
-    c = Curl::Easy.new("https://api.github.com/repos/#{params[:user]}/#{params[:repo]}/#{@thing}")
+    c = Curl::Easy.new("https://api.github.com/repos/#{params[:user]}/#{params[:repo]}/#{Badgerise.without_extension params[:thing]}")
     c.headers = {
         'Accept'     => 'application/json',
         'User-agent' => 'GithubBadges'
@@ -32,6 +28,7 @@ class GithubBadges < Sinatra::Base
     c.perform
     j = JSON.parse c.body_str
     @count = j.count ||= 'NaN'
+
     bounce
   end
 
@@ -39,7 +36,7 @@ class GithubBadges < Sinatra::Base
   run! if app_file == $0
 
   def bounce
-    redirect Badgerise.target @thing, @count, @extension
+    redirect Badgerise.target params[:thing], @count
   end
 end
 
@@ -58,6 +55,7 @@ module Badgerise
   end
 
   def Badgerise.label source
+    source = without_extension source
     case source
       when 'issues'
         'open%20issues'
@@ -87,7 +85,7 @@ module Badgerise
     text
   end
 
-  def Badgerise.target type, count, extension = 'svg'
-    "http://img.shields.io/badge/#{label type}-#{count}-#{Badgerise.colour count}.#{extension}"
+  def Badgerise.target type, count
+    "http://img.shields.io/badge/#{label type}-#{count}-#{Badgerise.colour count}.#{Badgerise.get_extension type}"
   end
 end
