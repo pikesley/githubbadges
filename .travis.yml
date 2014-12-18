@@ -1,3 +1,10 @@
 language: ruby
 rvm:
 - 2.1.5
+deploy:
+  provider: heroku
+  api_key:
+    secure: UUhl7RGpGWVbCo3aDCYVJXy/bCXqtKXZRSemtbL9uk5AP4cf6LcAIlr7sdtjCQweieWZDyz80DsY5W86/YlFpDu2sJeg9YMc74zPphhCgfG6XTfQmLYNszjF84T4n/yBbu73UOQBOznoR/hrw1Z/vWnFAjRpfwYt2ZHeBh0loy0=
+  app: githubbadges
+  on:
+    repo: pikesley/githubbadges
