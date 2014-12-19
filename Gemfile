@@ -15,4 +15,5 @@ group :test do
   gem 'rspec'
   gem 'guard-cucumber'
   gem 'guard-rspec'
+  gem 'guard'
 end
