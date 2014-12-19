@@ -11,7 +11,7 @@
 
 ##Dynamically-generated [shields.io](http://shields.io/) badges
 
-_v0.0.1_
+_v0.0.2_
 
 ###API
 
