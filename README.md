@@ -15,14 +15,30 @@ _v0.0.1_
 
 ###API
 
-####`/:owner/:repo/issues.(png|svg)`
+####`/:owner/:repo/issues`
 
-Will redirect to a shields.io badge containing a count of the open Github issues on `:owner/:repo`
+Will redirect to a shields.io badge containing a count of the open Github issues on `:owner/:repo`. Defaults to SVG, append `.png` for a PNG version
 
-####`/:owner/:repo/pulls.(png|svg)`
+####`/:owner/:repo/pulls`
 
-Will redirect to a shields.io badge containing a count of the pending pull-requests on `:owner/:repo`
+Will redirect to a shields.io badge containing a count of the pending pull-requests on `:owner/:repo`. Defaults to SVG, append `.png` for a PNG version
 
 ####Undocumented
 
 Almost certainly works for other `:owner/:repo/{something}` API endpoints, too. If it responds to #count, then it should return something sensible.
+
+###Colours
+
+The choice of colours is kind of arbitrary (and almost certainly subject to change). The current rules are:
+
+    case count
+      when 0
+        'brightgreen'
+      when 1..3
+        'blue'
+      when 4..6
+        'orange'
+      else
+        'red'
+      end
+    end
