@@ -118,6 +118,7 @@ DEPENDENCIES
   coveralls
   cucumber
   curb
+  guard
   guard-cucumber
   guard-rspec
   haml
