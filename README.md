@@ -9,7 +9,7 @@
 
 #Github Badges
 
-##Dynamically-generated [shields.io](http://shields.io/) badges
+##Dynamically-generated [shields.io](http://shields.io/) badges for Github issues and oull-requests
 
 _v0.0.2_
 
