@@ -17,9 +17,10 @@ class GithubBadges < Sinatra::Base
     haml :index, locals: {
       title: 'Github Badges',
       github: GITHUB
-    }  end
+    }
+  end
 
-  get '/:user/:repo/:thing' do
+  get '/:user/:repo/:thing/?' do
     c = Curl::Easy.new("https://api.github.com/repos/#{params[:user]}/#{params[:repo]}/#{Badgerise.without_extension params[:thing]}")
     c.headers = {
         'Accept'     => 'application/json',
@@ -29,14 +30,14 @@ class GithubBadges < Sinatra::Base
     j = JSON.parse c.body_str
     @count = j.count ||= 'NaN'
 
-    bounce
+    bounce params[:style]
   end
 
   # start the server if ruby file executed directly
   run! if app_file == $0
 
-  def bounce
-    redirect Badgerise.target params[:thing], @count
+  def bounce style = nil
+    redirect Badgerise.target params[:thing], @count, style
   end
 end
 
@@ -85,7 +86,10 @@ module Badgerise
     text
   end
 
-  def Badgerise.target type, count
-    "http://img.shields.io/badge/#{label type}-#{count}-#{Badgerise.colour count}.#{Badgerise.get_extension type}"
+  def Badgerise.target type, count, style = nil
+    u = "http://img.shields.io/badge/#{label type}-#{count}-#{Badgerise.colour count}.#{Badgerise.get_extension type}"
+    u = "#{u}?style=#{style}" if style
+
+    u
   end
 end

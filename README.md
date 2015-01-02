@@ -11,17 +11,17 @@
 
 ##Dynamically-generated [shields.io](http://shields.io/) badges
 
-_v0.0.2_
+_v0.0.3_
 
 ###API
 
-####`/:owner/:repo/issues`
+####`/:owner/:repo/issues[?style={square, flat-square}]`
 
-Will redirect to a shields.io badge containing a count of the open Github issues on `:owner/:repo`. Defaults to SVG, append `.png` for a PNG version
+Will redirect to a shields.io badge containing a count of the open Github issues on `:owner/:repo`. Defaults to SVG, append `.png` for a PNG version. Style parameter is optional, redirects to the appropriate badge style.
 
-####`/:owner/:repo/pulls`
+####`/:owner/:repo/pulls[?style={square, flat-square}]`
 
-Will redirect to a shields.io badge containing a count of the pending pull-requests on `:owner/:repo`. Defaults to SVG, append `.png` for a PNG version
+Will redirect to a shields.io badge containing a count of the pending pull-requests on `:owner/:repo`. Defaults to SVG, append `.png` for a PNG version. Style parameter is optional, redirects to the appropriate badge style.
 
 ####Undocumented
 
